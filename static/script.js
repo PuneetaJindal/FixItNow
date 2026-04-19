@@ -35,7 +35,7 @@ window.onclick = function (e) {
 // ================= LOAD SERVICES =================
 function loadServices() {
     fetch('/api/services/', {
-        credentials: 'include'
+
     })
         .then(res => res.json())
         .then(data => {
@@ -107,7 +107,7 @@ function bookService(serviceId) {
 // ================= LOAD USER =================
 function loadUser() {
     fetch('/api/user/', {
-        credentials: 'include'
+
     })
         .then(res => {
             if (!res.ok) throw new Error("Not logged in");
