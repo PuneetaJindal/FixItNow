@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/login_style.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">FixItNow</div>
+
+      <div class="nav-links">
+        <a href="/services/" class="nav-btn">Services</a>
+        <a href="/bookings/" class="nav-btn">My Bookings</a>
+
+        {% if user.is_authenticated %}
+        <form method="post" action="/logout/">
+          {% csrf_token %}
+          <button type="submit" class="nav-btn logout">Logout</button>
+        </form>
+        {% else %}
+        <a href="/login/" class="nav-btn">Login</a>
+        {% endif %}
+      </div>
+    </div>
+    <h2>Login</h2>
+    <form method="post">
+      {%csrf_token%} {{form.as_p}}
+      <input type="hidden" name="next" value="{{next}}" />
+      <button type="submit">Login</button>
+      <p>New user?<a href="/signup">Signup here</a></p>
+    </form>
+    <footer class="footer">
+      <div class="footer-content">
+        <div>
+          <h3>FixItNow</h3>
+          <p>Your trusted home service platform</p>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <a href="/services/">Services</a><br />
+          <a href="/bookings/">Bookings</a>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <p>Email: support@fixitnow.com</p>
+          <p>Phone: +91 XXXXX XXXXX</p>
+        </div>
+      </div>
+
+      <p class="footer-bottom">© 2026 FixItNow. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

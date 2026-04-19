@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FixItNow</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <div class="logo">FixItNow</div>
+
+      <div class="nav-links">
+        <a href="/services/" class="nav-btn">Home</a>
+        <a href="/bookings/" class="nav-btn">My Bookings</a>
+
+        {% if user.is_authenticated %}
+        <div class="profile-menu">
+          <div class="profile-icon" onclick="toggleDropdown()">👤</div>
+
+          <div class="dropdown" id="dropdown-menu">
+            <a href="/profile/">My Profile</a>
+
+            <form method="post" action="/logout/">
+              {% csrf_token %}
+              <button type="submit">Logout</button>
+            </form>
+          </div>
+        </div>
+        {% else %}
+        <a href="/login/" class="nav-btn">Login</a>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+      <img
+        src="https://img.freepik.com/premium-vector/plumbing-repair-service-set-maintenance-worker-water-mechanic-pumbing-shower-bathtub-sink-drain_654623-630.jpg"
+        class="hero-img"
+        alt="Home Services"
+      />
+
+      <div class="hero-text">
+        <h1>Home Services at Your Doorstep</h1>
+        <p>
+          Book trusted electricians, plumbers, AC repair & cleaning in seconds
+        </p>
+        <a href="#services-container" class="hero-btn">Explore Services</a>
+      </div>
+    </div>
+
+    <!-- TITLE -->
+    <h1>Available Services</h1>
+
+    <!-- SERVICES -->
+    <div id="services-container"></div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div>
+          <h3>FixItNow</h3>
+          <p>Your trusted home service platform</p>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <a href="/services/">Services</a><br />
+          <a href="/bookings/">Bookings</a>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <p>Email: puneetajindal4@gmail.com</p>
+          <p>Phone: +91 79983 00087</p>
+        </div>
+      </div>
+
+      <p class="footer-bottom">© 2026 FixItNow. All rights reserved.</p>
+    </footer>
+
+    {% csrf_token %} {% load static %}
+    <script src="/static/script.js"></script>
+  </body>
+</html>

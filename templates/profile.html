@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Profile</title>
+    <link rel="stylesheet" href="/static/profile_style.css" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">FixItNow</div>
+
+      <div class="nav-links">
+        <a href="/services/" class="nav-btn">Home</a>
+        <a href="/bookings/" class="nav-btn">My Bookings</a>
+
+        {% if user.is_authenticated %}
+        <div class="profile-menu">
+          <div class="profile-icon" onclick="toggleDropdown()">👤</div>
+
+          <div class="dropdown" id="dropdown-menu">
+            <a href="/profile/">My Profile</a>
+
+            <form method="post" action="/logout/">
+              {% csrf_token %}
+              <button type="submit">Logout</button>
+            </form>
+          </div>
+        </div>
+        {% else %}
+        <a href="/login/" class="nav-btn">Login</a>
+        {% endif %}
+      </div>
+    </div>
+    <h1>My Profile</h1>
+
+    <div id="profile-info"></div>
+
+    <h2 style="margin-top: 30px">Booking History</h2>
+    <div id="history-container"></div>
+
+    <script src="/static/profile.js"></script>
+  </body>
+</html>

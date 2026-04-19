@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Bookings</title>
+    <link rel="stylesheet" href="/static/bookings_style.css" />
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <div class="navbar">
+        <div class="logo">FixItNow</div>
+
+        <div class="nav-links">
+          <a href="/services/" class="nav-btn">Services</a>
+          <a href="/bookings/" class="nav-btn">My Bookings</a>
+
+            {% if user.is_authenticated %}
+        <div class="profile-menu">
+          <div class="profile-icon" onclick="toggleDropdown()">👤</div>
+
+          <div class="dropdown" id="dropdown-menu">
+            <a href="/profile/">My Profile</a>
+
+            <form method="post" action="/logout/">
+              {% csrf_token %}
+              <button type="submit">Logout</button>
+            </form>
+          </div>
+        </div>
+        {% else %}
+        <a href="/login/" class="nav-btn">Login</a>
+        {% endif %}
+      </div>
+    </div>
+        </div>
+      </div>
+      <h1>My Bookings</h1>
+      <div id="bookings-container"></div>
+    </div>
+    {%load static%}
+    <footer class="footer">
+      <div class="footer-content">
+        <div>
+          <h3>FixItNow</h3>
+          <p>Your trusted home service platform</p>
+        </div>
+
+        <div>
+          <h4>Quick Links</h4>
+          <a href="/services/">Services</a><br />
+          <a href="/bookings/">Bookings</a>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <p>Email: puneetajindal4@gmail.com</p>
+          <p>Phone: +91 79983 00087</p>
+        </div>
+      </div>
+
+      <p class="footer-bottom">© 2026 FixItNow. All rights reserved.</p>
+    </footer>
+    <script src="/static/bookings.js"></script>
+  
+  </body>
+</html>

@@ -1,0 +1,250 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* ===== OVERLAY (BACKGROUND DIM) ===== */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    /* dark overlay */
+    backdrop-filter: blur(6px);
+    /* blur effect */
+    z-index: 0;
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #f6f7fb, #eef1f7);
+    color: #1f2937;
+
+    min-height: 100vh;
+    padding: 3px;
+    display: flex;
+    flex-direction: column;
+
+    align-items: stretch;
+    /* IMPORTANT FIX */
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-btn.active {
+    background: #111;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ff5a5f;
+    /* Swiggy vibe */
+}
+
+/* NAV BUTTONS */
+.nav-btn {
+    text-decoration: none;
+    color: white;
+    background: #ff5a5f;
+    padding: 10px 18px;
+    border-radius: 25px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 90, 95, 0.4);
+}
+
+.logout {
+    background: #333;
+}
+
+.logout:hover {
+    background: #111;
+}
+
+.footer {
+    margin-top: 40px;
+    background: #111;
+    color: white;
+    padding: 40px 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #aaa;
+}
+
+/* ===== CENTER POPUP ===== */
+form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    background: #fff;
+    padding: 35px 30px;
+    border-radius: 18px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    animation: popup 0.4s ease forwards;
+}
+
+/* ===== HEADING ===== */
+h2 {
+    position: fixed;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+    z-index: 10;
+}
+
+/* ===== INPUT FIELDS ===== */
+form p {
+    margin-bottom: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+/* FOCUS */
+input:focus {
+    border-color: #ff5a5f;
+    box-shadow: 0 0 6px rgba(255, 90, 95, 0.4);
+    outline: none;
+}
+
+/* ===== BUTTON ===== */
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(135deg, #ff5a5f, #fc8019);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== LINK ===== */
+form p:last-child {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+a {
+    color: #ff5a5f;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ===== ERROR BOX ===== */
+ul {
+    background: #ffe6e6;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes popup {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 480px) {
+    form {
+        padding: 25px 18px;
+    }
+
+    h2 {
+        font-size: 22px;
+        top: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    #services-container {
+        padding: 10px 15px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+}
