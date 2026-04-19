@@ -34,7 +34,7 @@ window.onclick = function (e) {
 
 // ================= LOAD SERVICES =================
 function loadServices() {
-    fetch('http://127.0.0.1:8000/api/services/', {
+    fetch('/api/services/', {
         credentials: 'include'
     })
         .then(res => res.json())
@@ -79,7 +79,7 @@ function bookService(serviceId) {
     const date = new Date().toISOString().split('T')[0];
     const time = new Date().toTimeString().split(' ')[0];
 
-    fetch('http://127.0.0.1:8000/api/bookings/', {
+    fetch('/api/bookings/', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -106,7 +106,7 @@ function bookService(serviceId) {
 
 // ================= LOAD USER =================
 function loadUser() {
-    fetch('http://127.0.0.1:8000/api/user/', {
+    fetch('/api/user/', {
         credentials: 'include'
     })
         .then(res => {
@@ -133,7 +133,7 @@ function loadUser() {
 
 // ================= LOAD PENDING JOBS =================
 function loadPendingJobs() {
-    fetch('http://127.0.0.1:8000/api/operator/pending/', {
+    fetch('/api/operator/pending/', {
         credentials: 'include'
     })
         .then(res => res.json())
@@ -171,7 +171,7 @@ function loadPendingJobs() {
 
 // ================= ACCEPT JOB =================
 function acceptJob(id) {
-    fetch(`http://127.0.0.1:8000/api/bookings/${id}/`, {
+    fetch(`/api/bookings/${id}/`, {
         method: 'PUT',
         credentials: 'include',
         headers: {

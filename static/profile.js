@@ -1,5 +1,5 @@
 // ================= PROFILE INFO =================
-fetch('http://127.0.0.1:8000/api/user/', {
+fetch('/api/user/', {
     credentials: 'include'
 })
     .then(res => res.json())
@@ -18,7 +18,7 @@ function toggleDropdown() {
 }
 
 // ================= COMPLETED BOOKINGS ONLY =================
-fetch('http://127.0.0.1:8000/api/bookings/', {
+fetch('/api/bookings/', {
     credentials: 'include'
 })
     .then(res => res.json())
