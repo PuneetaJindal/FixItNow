@@ -21,16 +21,16 @@ window.onclick = function (e) {
 };
 
 // ================= SERVICE IMAGE =================
-function getServiceImage(name) {
-    const n = name.toLowerCase();
+// function getServiceImage(name) {
+//     const n = name.toLowerCase();
 
-    if (n.includes("ac")) return "https://www.matrixsolutions.tv/wp-content/uploads/2014/11/service-ac.jpg";
-    if (n.includes("electric")) return "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80";
-    if (n.includes("plumb")) return "https://c8.alamy.com/comp/JXXP4H/young-african-male-plumber-repairing-sink-in-bathroom-JXXP4H.jpg";
-    if (n.includes("clean")) return "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1dPSpE.img?w=1691&h=1129&m=4&q=84";
+//     if (n.includes("ac")) return "https://www.matrixsolutions.tv/wp-content/uploads/2014/11/service-ac.jpg";
+//     if (n.includes("electric")) return "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80";
+//     if (n.includes("plumb")) return "https://c8.alamy.com/comp/JXXP4H/young-african-male-plumber-repairing-sink-in-bathroom-JXXP4H.jpg";
+//     if (n.includes("clean")) return "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1dPSpE.img?w=1691&h=1129&m=4&q=84";
 
-    return "https://via.placeholder.com/300x200?text=Service";
-}
+//     return "https://via.placeholder.com/300x200?text=Service";
+// }
 
 // ================= LOAD SERVICES =================
 function loadServices() {
@@ -48,8 +48,7 @@ function loadServices() {
                 let div = document.createElement('div');
 
                 div.innerHTML = `
-                <img src="${getServiceImage(service.name)}"
-                    style="width:220px;height:140px;object-fit:cover;border-radius:10px;margin-bottom:10px;">
+                
 
                 <h3>${service.name}</h3>
                 <p>${service.description}</p>
