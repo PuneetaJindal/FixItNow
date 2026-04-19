@@ -35,7 +35,7 @@ window.onclick = function (e) {
 // ================= LOAD SERVICES =================
 function loadServices() {
     fetch('/api/services/', {
-
+        credentials: 'include'
     })
         .then(res => res.json())
         .then(data => {
@@ -105,9 +105,34 @@ function bookService(serviceId) {
 }
 
 // ================= LOAD USER =================
+// function loadUser() {
+//     fetch('/api/user/', {
+//         credentials: 'include'
+//     })
+//         .then(res => {
+//             if (!res.ok) throw new Error("Not logged in");
+//             return res.json();
+//         })
+//         .then(user => {
+//             window.USER_ROLE = user.role;
+
+//             let container = document.getElementById('services-container');
+//             if (container) container.innerHTML = ""; // clear
+
+//             if (user.role === 'operator') {
+//                 loadPendingJobs();   // ✅ only jobs
+//             } else {
+//                 loadServices();      // ✅ only services
+//             }
+//         })
+//         .catch(() => {
+//             window.USER_ROLE = null;
+//             loadServices();          // guest
+//         });
+// }
 function loadUser() {
     fetch('/api/user/', {
-
+        credentials: 'include'
     })
         .then(res => {
             if (!res.ok) throw new Error("Not logged in");
@@ -116,18 +141,15 @@ function loadUser() {
         .then(user => {
             window.USER_ROLE = user.role;
 
-            let container = document.getElementById('services-container');
-            if (container) container.innerHTML = ""; // clear
-
             if (user.role === 'operator') {
-                loadPendingJobs();   // ✅ only jobs
+                loadPendingJobs();
             } else {
-                loadServices();      // ✅ only services
+                loadServices();
             }
         })
         .catch(() => {
             window.USER_ROLE = null;
-            loadServices();          // guest
+            loadServices();
         });
 }
 
