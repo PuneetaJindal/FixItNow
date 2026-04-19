@@ -29,7 +29,7 @@ function getServiceImage(name) {
     if (n.includes("plumb")) return "/static/images/plumber.jpg";
     if (n.includes("clean")) return "/static/images/cleaning.webp";
 
-    return "/static/images/home.jpg";
+    return "/static/images/home_img.jpg";
 }
 
 // ================= LOAD SERVICES =================
