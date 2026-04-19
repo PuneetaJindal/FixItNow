@@ -25,9 +25,9 @@ function getServiceImage(name) {
     const n = name.toLowerCase();
 
     if (n.includes("ac")) return "/static/images/ac_repair.jpg";
-    if (n.includes("electric")) return "/static/images/electrician.webp";
+    if (n.includes("electric")) return "/static/images/electrician.jpg";
     if (n.includes("plumb")) return "/static/images/plumber.jpg";
-    if (n.includes("clean")) return "/static/images/cleaning.jpg";
+    if (n.includes("clean")) return "/static/images/cleaning.webp";
 
     return "/static/images/home.jpg";
 }
