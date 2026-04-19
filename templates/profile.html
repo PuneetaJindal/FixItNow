@@ -1,9 +1,10 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>Profile</title>
-    <link rel="stylesheet" href="/static/profile_style.css" />
+    <link rel="stylesheet" href="{% static 'profile_style.css' %}" />
   </head>
   <body>
     <div class="navbar">
@@ -38,6 +39,6 @@
     <h2 style="margin-top: 30px">Booking History</h2>
     <div id="history-container"></div>
 
-    <script src="/static/profile.js"></script>
+    <script src="{% static 'profile.js' %}"></script>
   </body>
 </html>

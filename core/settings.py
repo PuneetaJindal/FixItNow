@@ -46,9 +46,10 @@ INSTALLED_APPS = [
 LOGIN_REDIRECT_USER=('')
 LOGOUT_REDIRECT_USER=('/login')
 LOGOUT_REDIRECT_URL = '/login/'
-'whitenoise.middleware.WhiteNoiseMiddleware',
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -132,4 +133,4 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'

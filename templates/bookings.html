@@ -1,10 +1,11 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Bookings</title>
-    <link rel="stylesheet" href="/static/bookings_style.css" />
+       <link rel="stylesheet" href="{% static 'bookings_style.css' %}" />
   </head>
   <body>
     <div class="page-wrapper">
@@ -61,7 +62,7 @@
 
       <p class="footer-bottom">© 2026 FixItNow. All rights reserved.</p>
     </footer>
-    <script src="/static/bookings.js"></script>
+    <script src="{% static 'bookings.js' %}"></script>
   
   </body>
 </html>
