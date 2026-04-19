@@ -21,20 +21,20 @@ window.onclick = function (e) {
 };
 
 // ================= SERVICE IMAGE =================
-function getServiceImage(name) {
-    const n = name.toLowerCase();
+// function getServiceImage(name) {
+//     const n = name.toLowerCase();
 
-    if (n.includes("ac")) return "https://www.matrixsolutions.tv/wp-content/uploads/2014/11/service-ac.jpg";
-    if (n.includes("electric")) return "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80";
-    if (n.includes("plumb")) return "https://c8.alamy.com/comp/JXXP4H/young-african-male-plumber-repairing-sink-in-bathroom-JXXP4H.jpg";
-    if (n.includes("clean")) return "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1dPSpE.img?w=1691&h=1129&m=4&q=84";
+//     if (n.includes("ac")) return "https://www.matrixsolutions.tv/wp-content/uploads/2014/11/service-ac.jpg";
+//     if (n.includes("electric")) return "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80";
+//     if (n.includes("plumb")) return "https://c8.alamy.com/comp/JXXP4H/young-african-male-plumber-repairing-sink-in-bathroom-JXXP4H.jpg";
+//     if (n.includes("clean")) return "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1dPSpE.img?w=1691&h=1129&m=4&q=84";
 
-    return "https://via.placeholder.com/300x200?text=Service";
-}
+//     return "https://via.placeholder.com/300x200?text=Service";
+// }
 
 // ================= LOAD SERVICES =================
 function loadServices() {
-    fetch('http://127.0.0.1:8000/api/services/', {
+    fetch('/api/services/', {
         credentials: 'include'
     })
         .then(res => res.json())
@@ -48,8 +48,7 @@ function loadServices() {
                 let div = document.createElement('div');
 
                 div.innerHTML = `
-                <img src="${getServiceImage(service.name)}"
-                    style="width:220px;height:140px;object-fit:cover;border-radius:10px;margin-bottom:10px;">
+                
 
                 <h3>${service.name}</h3>
                 <p>${service.description}</p>
@@ -80,7 +79,7 @@ function bookService(serviceId) {
     const date = new Date().toISOString().split('T')[0];
     const time = new Date().toTimeString().split(' ')[0];
 
-    fetch('http://127.0.0.1:8000/api/bookings/', {
+    fetch('/api/bookings/', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -106,8 +105,33 @@ function bookService(serviceId) {
 }
 
 // ================= LOAD USER =================
+// function loadUser() {
+//     fetch('/api/user/', {
+//         credentials: 'include'
+//     })
+//         .then(res => {
+//             if (!res.ok) throw new Error("Not logged in");
+//             return res.json();
+//         })
+//         .then(user => {
+//             window.USER_ROLE = user.role;
+
+//             let container = document.getElementById('services-container');
+//             if (container) container.innerHTML = ""; // clear
+
+//             if (user.role === 'operator') {
+//                 loadPendingJobs();   // ✅ only jobs
+//             } else {
+//                 loadServices();      // ✅ only services
+//             }
+//         })
+//         .catch(() => {
+//             window.USER_ROLE = null;
+//             loadServices();          // guest
+//         });
+// }
 function loadUser() {
-    fetch('http://127.0.0.1:8000/api/user/', {
+    fetch('/api/user/', {
         credentials: 'include'
     })
         .then(res => {
@@ -117,24 +141,21 @@ function loadUser() {
         .then(user => {
             window.USER_ROLE = user.role;
 
-            let container = document.getElementById('services-container');
-            if (container) container.innerHTML = ""; // clear
-
             if (user.role === 'operator') {
-                loadPendingJobs();   // ✅ only jobs
+                loadPendingJobs();
             } else {
-                loadServices();      // ✅ only services
+                loadServices();
             }
         })
         .catch(() => {
             window.USER_ROLE = null;
-            loadServices();          // guest
+            loadServices();
         });
 }
 
 // ================= LOAD PENDING JOBS =================
 function loadPendingJobs() {
-    fetch('http://127.0.0.1:8000/api/operator/pending/', {
+    fetch('/api/operator/pending/', {
         credentials: 'include'
     })
         .then(res => res.json())
@@ -172,7 +193,7 @@ function loadPendingJobs() {
 
 // ================= ACCEPT JOB =================
 function acceptJob(id) {
-    fetch(`http://127.0.0.1:8000/api/bookings/${id}/`, {
+    fetch(`/api/bookings/${id}/`, {
         method: 'PUT',
         credentials: 'include',
         headers: {

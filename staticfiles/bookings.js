@@ -44,7 +44,7 @@ function renderTimeline(currentStatus) {
 
 // ---------------- LOAD BOOKINGS ----------------
 function loadBookings() {
-    fetch('http://127.0.0.1:8000/api/bookings/', {
+    fetch('/api/bookings/', {
         method: "GET",
         credentials: 'include'
     })
@@ -113,7 +113,7 @@ function loadBookings() {
         .catch(err => console.error("Error loading bookings:", err));
 }
 function loadUser() {
-    fetch('http://127.0.0.1:8000/api/user/', {
+    fetch('/api/user/', {
         credentials: 'include'
     })
         .then(res => res.json())
@@ -128,7 +128,7 @@ function loadUser() {
 }
 // ---------------- UPDATE STATUS ----------------
 function updateStatus(id, status) {
-    fetch(`http://127.0.0.1:8000/api/bookings/${id}/`, {
+    fetch(`/api/bookings/${id}/`, {
         method: 'PUT',
         credentials: 'include',
         headers: {
